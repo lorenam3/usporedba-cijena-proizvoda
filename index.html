@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="hr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kalkulator troškova</title>
+  </head>
+  <body>
+    <header>Kalkulator troškova</header>
+
+    <main>
+      <h2>Istaknuti proizvodi</h2>
+
+      <div class="tabs">
+        <button class="tab" data-category="Potrepštine">Potrepštine</button>
+        <button class="tab" data-category="Voće i povrće">Voće i povrće</button>
+        <button class="tab" data-category="Meso i riba">Meso i riba</button>
+        <button class="tab" data-category="Slatkiši">Slatkiši</button>
+        <button class="tab" data-category="Piće">Piće</button>
+        <button class="tab" data-category="Njega">Njega</button>
+      </div>
+
+      <div class="search-add">
+        <input type="text" id="search" placeholder="Pretraži i dodaj..." />
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Proizvod</th>
+            <th>Kategorija</th>
+            <th>Cijena 2024.</th>
+            <th>Cijena 2025.</th>
+            <th>2024./2025. (%)</th>
+          </tr>
+        </thead>
+        <tbody id="product-list"></tbody>
+        <tfoot>
+          <tr>
+            <td colspan="2"><strong>Ukupno:</strong></td>
+            <td id="total-2024">0 €</td>
+            <td id="total-2025">0 €</td>
+            <td id="total-change">0%</td>
+          </tr>
+        </tfoot>
+      </table>
+    </main>
+
+    <footer>
+      <p>Copyright 2025.</p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
