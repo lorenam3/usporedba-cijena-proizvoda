@@ -1,5 +1,12 @@
 document.addEventListener("DOMContentLoaded", () => {
   fetchProducts();
+
+  document
+    .getElementById("cancel-edit")
+    .addEventListener("click", closeEditModal);
+  document
+    .getElementById("modal-overlay")
+    .addEventListener("click", closeEditModal);
 });
 
 function fetchProducts() {
@@ -27,20 +34,20 @@ function displayProducts(products) {
   products.forEach((product) => {
     const row = document.createElement("tr");
     row.innerHTML = `
-          <td>${product.naziv}</td>
-          <td>${product.kategorija}</td>
-          <td>${product.istaknuto ? "da" : "ne"}</td>
-          <td>${product.cijena_2025.toFixed(2)} €</td>
-          <td>${
-            product.posljednja_izmjena ? product.posljednja_izmjena : "N/A"
-          }</td>
-          <td>
-            <button class="edit-btn" data-id="${product.id}">✏️ Uredi</button>
-            <button class="delete-btn" data-id="${
-              product.id
-            }">🗑️ Obriši</button>
-          </td>
-        `;
+            <td>${product.naziv}</td>
+            <td>${product.kategorija}</td>
+            <td>${product.istaknuto ? "da" : "ne"}</td>
+            <td>${product.cijena_2025.toFixed(2)} €</td>
+            <td>${
+              product.posljednja_izmjena ? product.posljednja_izmjena : "N/A"
+            }</td>
+            <td>
+              <button class="edit-btn" data-id="${product.id}">✏️ Uredi</button>
+              <button class="delete-btn" data-id="${
+                product.id
+              }">🗑️ Obriši</button>
+            </td>
+          `;
     productList.appendChild(row);
   });
 
@@ -65,6 +72,11 @@ function addEventListeners(products) {
 }
 
 function openEditModal(product) {
+  if (!product) {
+    console.error("Proizvod nije pronađen!");
+    return;
+  }
+
   const modal = document.getElementById("edit-modal");
   const modalOverlay = document.getElementById("modal-overlay");
 
@@ -78,15 +90,16 @@ function openEditModal(product) {
   document.getElementById("save-edit").onclick = function () {
     saveProductChanges(product.id);
   };
-
-  document.getElementById("cancel-edit").onclick = function () {
-    closeEditModal();
-  };
 }
 
 function saveProductChanges(productId) {
   let products = JSON.parse(localStorage.getItem("products")) || [];
   let product = products.find((p) => p.id == productId);
+
+  if (!product) {
+    console.error("Proizvod nije pronađen!");
+    return;
+  }
 
   product.naziv = document.getElementById("edit-name").value;
   product.kategorija = document.getElementById("edit-category").value;
@@ -96,7 +109,7 @@ function saveProductChanges(productId) {
   localStorage.setItem("products", JSON.stringify(products));
 
   closeEditModal();
-  fetchProducts();
+  displayProducts(products);
 }
 
 function closeEditModal() {
@@ -107,7 +120,7 @@ function closeEditModal() {
 function deleteProduct(id) {
   if (confirm("Jeste li sigurni da želite obrisati proizvod?")) {
     let products = JSON.parse(localStorage.getItem("products")) || [];
-    products = products.filter((p) => p.id != id);
+    products = products.filter((p) => p.id != Number(id));
     localStorage.setItem("products", JSON.stringify(products));
     fetchProducts();
   }
