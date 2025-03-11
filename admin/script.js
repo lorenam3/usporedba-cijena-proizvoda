@@ -7,6 +7,15 @@ document.addEventListener("DOMContentLoaded", () => {
   document
     .getElementById("modal-overlay")
     .addEventListener("click", closeEditModal);
+
+  document
+    .getElementById("add-product")
+    .addEventListener("click", openNewProductModal);
+  document
+    .getElementById("cancel-new")
+    .addEventListener("click", closeNewProductModal);
+
+  document.getElementById("save-new").addEventListener("click", saveNewProduct);
 });
 
 function fetchProducts() {
@@ -34,20 +43,22 @@ function displayProducts(products) {
   products.forEach((product) => {
     const row = document.createElement("tr");
     row.innerHTML = `
-            <td>${product.naziv}</td>
-            <td>${product.kategorija}</td>
-            <td>${product.istaknuto ? "da" : "ne"}</td>
-            <td>${product.cijena_2025.toFixed(2)} €</td>
-            <td>${
-              product.posljednja_izmjena ? product.posljednja_izmjena : "N/A"
-            }</td>
-            <td>
-              <button class="edit-btn" data-id="${product.id}">✏️ Uredi</button>
-              <button class="delete-btn" data-id="${
-                product.id
-              }">🗑️ Obriši</button>
-            </td>
-          `;
+              <td>${product.naziv}</td>
+              <td>${product.kategorija}</td>
+              <td>${product.istaknuto ? "da" : "ne"}</td>
+              <td>${product.cijena_2025.toFixed(2)} €</td>
+              <td>${
+                product.posljednja_izmjena ? product.posljednja_izmjena : "N/A"
+              }</td>
+              <td>
+                <button class="edit-btn" data-id="${
+                  product.id
+                }">✏️ Uredi</button>
+                <button class="delete-btn" data-id="${
+                  product.id
+                }">🗑️ Obriši</button>
+              </td>
+            `;
     productList.appendChild(row);
   });
 
@@ -87,9 +98,9 @@ function openEditModal(product) {
   modal.style.display = "block";
   modalOverlay.style.display = "block";
 
-  document.getElementById("save-edit").onclick = function () {
+  document.getElementById("save-edit").addEventListener("click", function () {
     saveProductChanges(product.id);
-  };
+  });
 }
 
 function saveProductChanges(productId) {
@@ -124,4 +135,48 @@ function deleteProduct(id) {
     localStorage.setItem("products", JSON.stringify(products));
     fetchProducts();
   }
+}
+
+function openNewProductModal() {
+  document.getElementById("new-product-modal").style.display = "block";
+}
+
+function closeNewProductModal() {
+  document.getElementById("new-product-modal").style.display = "none";
+  document.getElementById("new-name").value = "";
+  document.getElementById("new-category").value = "Potrepštine";
+  document.getElementById("new-price-2024").value = "";
+  document.getElementById("new-price-2025").value = "";
+  document.getElementById("new-highlighted").checked = false;
+}
+
+function saveNewProduct() {
+  let products = JSON.parse(localStorage.getItem("products")) || [];
+
+  const newProduct = {
+    id: products.length > 0 ? products[products.length - 1].id + 1 : 1,
+    naziv: document.getElementById("new-name").value,
+    kategorija: document.getElementById("new-category").value,
+    cijena_2024:
+      parseFloat(document.getElementById("new-price-2024").value) || 0,
+    cijena_2025:
+      parseFloat(document.getElementById("new-price-2025").value) || 0,
+    istaknuto: document.getElementById("new-highlighted").checked,
+    posljednja_izmjena: new Date().toLocaleString("hr-HR"),
+  };
+
+  if (
+    !newProduct.naziv ||
+    newProduct.cijena_2024 <= 0 ||
+    newProduct.cijena_2024 <= 0
+  ) {
+    alert("Molimo unesite ispravan naziv i cijenu.");
+    return;
+  }
+
+  products.push(newProduct);
+  localStorage.setItem("products", JSON.stringify(products));
+
+  closeNewProductModal();
+  displayProducts(products);
 }

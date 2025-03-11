@@ -15,7 +15,42 @@
 
     <main>
       <h2>Proizvodi</h2>
-      <button id="add-product">Dodaj novi</button>
+      <button id="add-product" class="btn">Dodaj novi</button>
+
+      <div id="new-product-modal" class="modal">
+        <div class="modal-content">
+          <h2>Novi proizvod</h2>
+
+          <label for="new-name">Naziv proizvoda:</label>
+          <input type="text" id="new-name" />
+
+          <label for="new-category">Kategorija:</label>
+          <select id="new-category">
+            <option value="Potrepštine">Potrepštine</option>
+            <option value="Voće i povrće">Voće i povrće</option>
+            <option value="Meso i riba">Meso i riba</option>
+            <option value="Slatkiši">Slatkiši</option>
+            <option value="Piće">Piće</option>
+            <option value="Njega">Njega</option>
+          </select>
+
+          <label for="new-price-2024">Cijena 2024. (€):</label>
+          <input type="number" id="new-price-2024" step="0.01" />
+
+          <label for="new-price-2025">Cijena 2025. (€):</label>
+          <input type="number" id="new-price-2025" step="0.01" />
+
+          <div class="checkbox-group">
+            <input type="checkbox" id="new-highlighted" />
+            <label for="new-highlighted">Istaknuti proizvod</label>
+          </div>
+
+          <div class="button-group">
+            <button id="save-new" class="btn">Spremi</button>
+            <button id="cancel-new" class="btn cancel">Odustani</button>
+          </div>
+        </div>
+      </div>
 
       <table>
         <thead>
@@ -31,17 +66,13 @@
         <tbody id="product-list"></tbody>
       </table>
 
-      <div id="modal-overlay" class="modal-overlay"></div>
-
       <div id="edit-modal" class="modal">
-        <h2>Uredi proizvod</h2>
+        <div class="modal-content">
+          <h2>Uredi proizvod</h2>
 
-        <div class="modal-group">
           <label for="edit-name">Naziv proizvoda:</label>
           <input type="text" id="edit-name" />
-        </div>
 
-        <div class="modal-group">
           <label for="edit-category">Kategorija:</label>
           <select id="edit-category">
             <option value="Potrepštine">Potrepštine</option>
@@ -51,28 +82,29 @@
             <option value="Piće">Piće</option>
             <option value="Njega">Njega</option>
           </select>
-        </div>
 
-        <div class="modal-group">
           <label for="edit-price">Cijena 2025. (€):</label>
           <input type="number" id="edit-price" step="0.01" />
-        </div>
 
-        <div class="checkbox-group">
-          <input type="checkbox" id="edit-highlighted" />
-          <label for="edit-highlighted">Istaknuti proizvod</label>
-        </div>
+          <div class="checkbox-group">
+            <input type="checkbox" id="edit-highlighted" />
+            <label for="edit-highlighted">Istaknuti proizvod</label>
+          </div>
 
-        <div class="button-group">
-          <button id="save-edit" type="button">Spremi</button>
-          <button id="cancel-edit" type="button">Odustani</button>
+          <div class="button-group">
+            <button id="save-edit" class="btn">Spremi</button>
+            <button id="cancel-edit" class="btn cancel">Odustani</button>
+          </div>
         </div>
       </div>
+
+      <div id="modal-overlay" class="modal-overlay"></div>
     </main>
 
     <footer>
       <p>&copy; 2025. Sva prava pridržana.</p>
     </footer>
+
     <script defer src="script.js"></script>
   </body>
 </html>

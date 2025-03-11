@@ -1,10 +1,19 @@
 document.addEventListener("DOMContentLoaded", () => {
-  fetch("products.json")
-    .then((response) => response.json())
-    .then((data) => {
-      prikaziProizvode(data.filter((p) => p.istaknuto));
-    })
-    .catch((error) => console.error("Greška pri učitavanju podataka:", error));
+  let products = JSON.parse(localStorage.getItem("products")) || [];
+
+  if (products.length === 0) {
+    fetch("products.json")
+      .then((response) => response.json())
+      .then((data) => {
+        localStorage.setItem("products", JSON.stringify(data));
+        prikaziProizvode(data.filter((p) => p.istaknuto));
+      })
+      .catch((error) =>
+        console.error("Greška pri učitavanju podataka:", error)
+      );
+  } else {
+    prikaziProizvode(products.filter((p) => p.istaknuto));
+  }
 });
 
 function prikaziProizvode(proizvodi) {
@@ -35,17 +44,11 @@ document.querySelectorAll(".tab").forEach((tab) => {
 
     document.querySelector("h2").textContent = kategorija;
 
-    fetch("products.json")
-      .then((response) => response.json())
-      .then((data) => {
-        let filtriraniProizvodi = data.filter(
-          (p) => p.kategorija === kategorija
-        );
-        prikaziProizvode(filtriraniProizvodi);
-      })
-      .catch((error) =>
-        console.error("Greška pri učitavanju podataka:", error)
-      );
+    let products = JSON.parse(localStorage.getItem("products")) || [];
+    let filtriraniProizvodi = products.filter(
+      (p) => p.kategorija === kategorija
+    );
+    prikaziProizvode(filtriraniProizvodi);
   });
 });
 
@@ -69,27 +72,25 @@ function azurirajUkupno(proizvodi) {
 document.getElementById("search").addEventListener("keypress", function (e) {
   if (e.key === "Enter") {
     let searchTerm = this.value.trim().toLowerCase();
+    let products = JSON.parse(localStorage.getItem("products")) || [];
 
-    fetch("products.json")
-      .then((response) => response.json())
-      .then((data) => {
-        let foundProduct = data.find((p) =>
-          p.naziv.toLowerCase().includes(searchTerm)
-        );
+    let foundProduct = products.find((p) =>
+      p.naziv.toLowerCase().includes(searchTerm)
+    );
 
-        if (foundProduct) {
-          prikaziProizvode([foundProduct]);
+    if (foundProduct) {
+      prikaziProizvode([foundProduct]);
 
-          let category = foundProduct.kategorija.toLowerCase();
-          let categoryButton = document.querySelector(
-            `.tab[data-category="${category}"]`
-          );
-          if (categoryButton) {
-            categoryButton.click();
-          }
-        } else {
-          const productList = document.getElementById("product-list");
-          productList.innerHTML = `
+      let category = foundProduct.kategorija.toLowerCase();
+      let categoryButton = document.querySelector(
+        `.tab[data-category="${category}"]`
+      );
+      if (categoryButton) {
+        categoryButton.click();
+      }
+    } else {
+      const productList = document.getElementById("product-list");
+      productList.innerHTML = `
               <tr>
                 <td colspan="5" style="text-align: center;">Nema traženog proizvoda.</td>
               </tr>
@@ -100,17 +101,13 @@ document.getElementById("search").addEventListener("keypress", function (e) {
               </tr>
             `;
 
-          azurirajUkupno([]);
+      azurirajUkupno([]);
 
-          document
-            .getElementById("add-product-btn")
-            .addEventListener("click", () => {
-              window.location.href = "admin.html";
-            });
-        }
-      })
-      .catch((error) =>
-        console.error("Greška pri učitavanju podataka:", error)
-      );
+      document
+        .getElementById("add-product-btn")
+        .addEventListener("click", () => {
+          window.location.href = "admin/admin.html";
+        });
+    }
   }
 });

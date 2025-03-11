@@ -1,9 +1,11 @@
 #edit-modal,
-#modal-overlay {
+#modal-overlay,
+#new-product-modal {
   display: none;
 }
 
-#edit-modal {
+#edit-modal,
+#new-product-modal {
   width: 70%;
   max-width: 800px;
   background: white;
@@ -29,20 +31,24 @@
   z-index: 1000;
 }
 
-#edit-modal h2 {
+#edit-modal h2,
+#new-product-modal h2 {
   font-size: 24px;
   font-weight: bold;
   margin-bottom: 10px;
 }
 
-#edit-modal label {
+#edit-modal label,
+#new-product-modal label {
   font-weight: bold;
   display: block;
   margin-bottom: 5px;
 }
 
 #edit-modal input,
-#edit-modal select {
+#edit-modal select,
+#new-product-modal input,
+#new-product-modal select {
   width: 100%;
   padding: 10px;
   font-size: 16px;
@@ -56,7 +62,8 @@
   gap: 8px;
 }
 
-#edit-modal input[type="checkbox"] {
+#edit-modal input[type="checkbox"],
+#new-product-modal input[type="checkbox"] {
   width: auto;
 }
 
@@ -75,11 +82,28 @@
   cursor: pointer;
 }
 
-#save-edit {
+#save-edit,
+#save-new {
   background: #007bff;
   color: white;
 }
 
-#cancel-edit {
+#cancel-edit,
+#cancel-new {
   background: #ccc;
+}
+
+#add-product {
+  background: #007bff;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.3s;
+}
+
+#add-product:hover {
+  background: #0056b3;
 }
