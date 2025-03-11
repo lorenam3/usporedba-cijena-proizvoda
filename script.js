@@ -33,13 +33,14 @@ document.querySelectorAll(".tab").forEach((tab) => {
   tab.addEventListener("click", function () {
     const kategorija = this.getAttribute("data-category");
 
+    document.querySelector("h2").textContent = kategorija;
+
     fetch("products.json")
       .then((response) => response.json())
       .then((data) => {
-        let filtriraniProizvodi;
-
-        filtriraniProizvodi = data.filter((p) => p.kategorija === kategorija);
-
+        let filtriraniProizvodi = data.filter(
+          (p) => p.kategorija === kategorija
+        );
         prikaziProizvode(filtriraniProizvodi);
       })
       .catch((error) =>
