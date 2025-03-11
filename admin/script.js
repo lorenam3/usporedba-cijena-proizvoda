@@ -18,6 +18,9 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("save-new").addEventListener("click", saveNewProduct);
 });
 
+const productsPerPage = 12;
+let currentPage = 1;
+
 function fetchProducts() {
   let products = JSON.parse(localStorage.getItem("products")) || [];
 
@@ -40,7 +43,11 @@ function displayProducts(products) {
   const productList = document.getElementById("product-list");
   productList.innerHTML = "";
 
-  products.forEach((product) => {
+  const start = (currentPage - 1) * productsPerPage;
+  const end = start + productsPerPage;
+  const paginatedProducts = products.slice(start, end);
+
+  paginatedProducts.forEach((product) => {
     const row = document.createElement("tr");
     row.innerHTML = `
               <td>${product.naziv}</td>
@@ -62,7 +69,29 @@ function displayProducts(products) {
     productList.appendChild(row);
   });
 
+  prikaziPaginaciju(products);
   addEventListeners(products);
+}
+
+function prikaziPaginaciju(products) {
+  const pagination = document.getElementById("pagination");
+  pagination.innerHTML = "";
+
+  const totalPages = Math.ceil(products.length / productsPerPage);
+
+  for (let i = 1; i <= totalPages; i++) {
+    const btn = document.createElement("button");
+    btn.textContent = i;
+    btn.classList.add("page-btn");
+    if (i === currentPage) btn.classList.add("active");
+
+    btn.addEventListener("click", () => {
+      currentPage = i;
+      displayProducts(products);
+    });
+
+    pagination.appendChild(btn);
+  }
 }
 
 function addEventListeners(products) {
@@ -165,16 +194,7 @@ function saveNewProduct() {
     posljednja_izmjena: new Date().toLocaleString("hr-HR"),
   };
 
-  if (
-    !newProduct.naziv ||
-    newProduct.cijena_2024 <= 0 ||
-    newProduct.cijena_2024 <= 0
-  ) {
-    alert("Molimo unesite ispravan naziv i cijenu.");
-    return;
-  }
-
-  products.push(newProduct);
+  products.unshift(newProduct);
   localStorage.setItem("products", JSON.stringify(products));
 
   closeNewProductModal();
