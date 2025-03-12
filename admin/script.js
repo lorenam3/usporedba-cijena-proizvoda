@@ -4,9 +4,6 @@ document.addEventListener("DOMContentLoaded", () => {
   document
     .getElementById("cancel-edit")
     .addEventListener("click", closeEditModal);
-  document
-    .getElementById("modal-overlay")
-    .addEventListener("click", closeEditModal);
 
   document
     .getElementById("add-product")
@@ -30,12 +27,14 @@ function fetchProducts() {
       .then((data) => {
         localStorage.setItem("products", JSON.stringify(data));
         displayProducts(data);
+        addEventListeners(data);
       })
       .catch((error) =>
         console.error("Greška pri dohvaćanju podataka:", error)
       );
   } else {
     displayProducts(products);
+    addEventListeners(products);
   }
 }
 
@@ -118,15 +117,14 @@ function openEditModal(product) {
   }
 
   const modal = document.getElementById("edit-modal");
-  const modalOverlay = document.getElementById("modal-overlay");
-
   document.getElementById("edit-name").value = product.naziv;
   document.getElementById("edit-category").value = product.kategorija;
   document.getElementById("edit-price").value = product.cijena_2025;
 
   modal.style.display = "block";
-  modalOverlay.style.display = "block";
 
+  const saveButton = document.getElementById("save-edit");
+  saveButton.replaceWith(saveButton.cloneNode(true));
   document.getElementById("save-edit").addEventListener("click", function () {
     saveProductChanges(product.id);
   });
@@ -154,7 +152,6 @@ function saveProductChanges(productId) {
 
 function closeEditModal() {
   document.getElementById("edit-modal").style.display = "none";
-  document.getElementById("modal-overlay").style.display = "none";
 }
 
 function deleteProduct(id) {
@@ -172,11 +169,6 @@ function openNewProductModal() {
 
 function closeNewProductModal() {
   document.getElementById("new-product-modal").style.display = "none";
-  document.getElementById("new-name").value = "";
-  document.getElementById("new-category").value = "Potrepštine";
-  document.getElementById("new-price-2024").value = "";
-  document.getElementById("new-price-2025").value = "";
-  document.getElementById("new-highlighted").checked = false;
 }
 
 function saveNewProduct() {
@@ -200,3 +192,18 @@ function saveNewProduct() {
   closeNewProductModal();
   displayProducts(products);
 }
+
+document
+  .getElementById("open-modal")
+  .addEventListener("click", function (event) {
+    event.preventDefault();
+    document.getElementById("new-product-modal").style.display = "block";
+  });
+
+document.querySelectorAll(".modal").forEach((modal) => {
+  modal.addEventListener("click", function (e) {
+    if (e.target === this) {
+      this.style.display = "none";
+    }
+  });
+});

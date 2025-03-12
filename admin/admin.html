@@ -5,18 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Usporedba cijena</title>
     <link rel="stylesheet" href="style.css" />
-    <script defer src="script.js"></script>
   </head>
   <body>
     <header>
+      <nav>
+        <a href="../index.html">Početna</a>
+        <a href="admin.html">Admin</a>
+        <a href="#" id="open-modal">Dodaj proizvod</a>
+      </nav>
       <h1>Usporedba cijena</h1>
-      <a href="../index.html">Početna</a>
     </header>
 
     <main>
-      <h2>Proizvodi</h2>
-      <button id="add-product" class="btn">Dodaj novi</button>
-
+      <div class="top-bar">
+        <h2>Proizvodi</h2>
+        <button id="add-product" class="btn">Dodaj novi proizvod</button>
+      </div>
       <div id="new-product-modal" class="modal">
         <div class="modal-content">
           <h2>Novi proizvod</h2>
@@ -98,8 +102,6 @@
           </div>
         </div>
       </div>
-
-      <div id="modal-overlay" class="modal-overlay"></div>
     </main>
 
     <footer>

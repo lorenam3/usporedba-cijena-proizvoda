@@ -84,12 +84,15 @@ table thead {
   background: #8b5e3c;
   color: white;
 }
-table thead th:first-child, table thead th:nth-child(2) {
+table thead th:first-child,
+table thead th:nth-child(2) {
   text-align: left;
 }
+
 table thead th:last-child {
   font-weight: bold;
 }
+
 table td,
 table th {
   padding: 10px;
@@ -98,6 +101,7 @@ table th {
 table tbody tr:nth-child(even) {
   background: #f5e6c8;
 }
+
 table td:nth-child(3),
 table td:nth-child(4),
 table td:nth-child(5),
@@ -109,6 +113,7 @@ table tfoot td:nth-child(3),
 table tfoot td:nth-child(4) {
   text-align: right;
 }
+
 table tfoot td:last-child {
   font-weight: bold;
 }
