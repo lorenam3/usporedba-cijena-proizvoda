@@ -17,14 +17,31 @@ body {
   padding: 20px;
 }
 
+nav {
+  position: absolute;
+  top: 25px;
+  left: 25px;
+  display: flex;
+}
+
+nav a {
+  text-decoration: none;
+  color: white;
+  font-size: 16px;
+  padding: 5px 10px;
+}
+
+nav a:hover {
+  color: #007bff;
+}
+
 header {
   background: $primary-color;
   color: white;
   text-align: center;
-  padding: 20px;
+  padding: 50px;
   font-size: 26px;
   font-weight: bold;
-  width: 100%;
 }
 
 footer {

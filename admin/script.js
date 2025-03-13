@@ -40,7 +40,10 @@ function fetchProducts() {
 
 function displayProducts(products) {
   const productList = document.getElementById("product-list");
+  const productContainer = document.querySelector(".product-container");
+
   productList.innerHTML = "";
+  productContainer.innerHTML = "";
 
   const start = (currentPage - 1) * productsPerPage;
   const end = start + productsPerPage;
@@ -49,28 +52,58 @@ function displayProducts(products) {
   paginatedProducts.forEach((product) => {
     const row = document.createElement("tr");
     row.innerHTML = `
-              <td>${product.naziv}</td>
-              <td>${product.kategorija}</td>
-              <td>${product.istaknuto ? "da" : "ne"}</td>
-              <td>${product.cijena_2025.toFixed(2)} €</td>
-              <td>${
-                product.posljednja_izmjena ? product.posljednja_izmjena : "N/A"
-              }</td>
-              <td>
-                <button class="edit-btn" data-id="${
-                  product.id
-                }">✏️ Uredi</button>
-                <button class="delete-btn" data-id="${
-                  product.id
-                }">🗑️ Obriši</button>
-              </td>
-            `;
+      <td>${product.naziv}</td>
+      <td>${product.kategorija}</td>
+      <td>${product.istaknuto ? "da" : "ne"}</td>
+      <td>${product.cijena_2025.toFixed(2)} €</td>
+      <td>${
+        product.posljednja_izmjena ? product.posljednja_izmjena : "N/A"
+      }</td>
+      <td>
+        <button class="edit-btn" data-id="${product.id}">✏️ Uredi</button>
+        <button class="delete-btn" data-id="${product.id}">🗑️ Obriši</button>
+      </td>
+    `;
     productList.appendChild(row);
+
+    const card = document.createElement("div");
+    card.classList.add("product-card");
+    card.innerHTML = `
+      <h3>${product.naziv}</h3>
+      <p><strong>Kategorija:</strong> ${product.kategorija}</p>
+      <p><strong>Istaknuto:</strong> ${product.istaknuto ? "da" : "ne"}</p>
+      <p><strong>Cijena:</strong> ${product.cijena_2025.toFixed(2)} €</p>
+      <p><strong>Posljednja izmjena:</strong> ${
+        product.posljednja_izmjena ? product.posljednja_izmjena : "N/A"
+      }</p>
+      <div class="card-actions">
+        <button class="edit-btn" data-id="${product.id}">✏️ Uredi</button>
+        <button class="delete-btn" data-id="${product.id}">🗑️ Obriši</button>
+      </div>
+    `;
+    productContainer.appendChild(card);
   });
 
   prikaziPaginaciju(products);
   addEventListeners(products);
+  updateDisplayMode();
 }
+
+function updateDisplayMode() {
+  const table = document.getElementById("product-table");
+  const productContainer = document.querySelector(".product-container");
+
+  if (window.innerWidth <= 768) {
+    table.style.display = "none";
+    productContainer.style.display = "grid";
+  } else {
+    table.style.display = "table";
+    productContainer.style.display = "none";
+  }
+}
+
+window.addEventListener("resize", updateDisplayMode);
+window.addEventListener("DOMContentLoaded", updateDisplayMode);
 
 function prikaziPaginaciju(products) {
   const pagination = document.getElementById("pagination");
@@ -99,30 +132,21 @@ function addEventListeners(products) {
     button.addEventListener("click", handleEditClick);
   });
 
+  document.querySelectorAll(".delete-btn").forEach((button) => {
+    button.removeEventListener("click", handleDeleteClick);
+    button.addEventListener("click", handleDeleteClick);
+  });
+
   function handleEditClick(event) {
     const productId = event.target.getAttribute("data-id");
     const product = products.find((p) => p.id == productId);
     openEditModal(product);
   }
 
-  document.querySelectorAll(".delete-btn").forEach((button) => {
-    button.replaceWith(button.cloneNode(true));
-  });
-
-  document.querySelectorAll(".edit-btn").forEach((button) => {
-    button.addEventListener("click", (event) => {
-      const productId = event.target.getAttribute("data-id");
-      const product = products.find((p) => p.id == productId);
-      openEditModal(product);
-    });
-  });
-
-  document.querySelectorAll(".delete-btn").forEach((button) => {
-    button.addEventListener("click", (event) => {
-      const productId = event.target.getAttribute("data-id");
-      deleteProduct(productId);
-    });
-  });
+  function handleDeleteClick(event) {
+    const productId = event.target.getAttribute("data-id");
+    deleteProduct(productId);
+  }
 }
 
 function openEditModal(product) {
@@ -139,8 +163,8 @@ function openEditModal(product) {
   modal.style.display = "block";
 
   const saveButton = document.getElementById("save-edit");
-  saveButton.replaceWith(saveButton.cloneNode(true));
-  document.getElementById("save-edit").addEventListener("click", function () {
+  saveButton.removeEventListener("click", saveProductChanges);
+  saveButton.addEventListener("click", function () {
     saveProductChanges(product.id);
   });
 }
@@ -186,6 +210,11 @@ function openNewProductModal() {
 
 function closeNewProductModal() {
   document.getElementById("new-product-modal").style.display = "none";
+  document.getElementById("new-name").value = "";
+  document.getElementById("new-category").value = "Potrepštine";
+  document.getElementById("new-price-2024").value = "";
+  document.getElementById("new-price-2025").value = "";
+  document.getElementById("new-highlighted").checked = false;
 }
 
 function saveNewProduct() {
@@ -223,26 +252,29 @@ document.querySelectorAll(".modal").forEach((modal) => {
 });
 
 // Pretraga proizvoda
-document.getElementById("search").addEventListener("keypress", function (e) {
-  if (e.key === "Enter") {
-    let searchTerm = this.value.trim().toLowerCase();
-    let products = JSON.parse(localStorage.getItem("products")) || [];
+document.getElementById("search").addEventListener("input", function (e) {
+  let searchTerm = this.value.trim().toLowerCase();
+  let products = JSON.parse(localStorage.getItem("products")) || [];
 
-    let foundProducts = products.filter((p) =>
-      p.naziv.toLowerCase().startsWith(searchTerm)
-    );
+  if (searchTerm === "") {
+    displayProducts(products);
+    return;
+  }
 
-    if (foundProducts.length > 0) {
-      displayProducts(foundProducts);
-    } else {
-      const productList = document.getElementById("product-list");
-      productList.innerHTML = `
+  let foundProducts = products.filter((p) =>
+    p.naziv.toLowerCase().startsWith(searchTerm)
+  );
+
+  if (foundProducts.length > 0) {
+    displayProducts(foundProducts);
+  } else {
+    const productList = document.getElementById("product-list");
+    productList.innerHTML = `
           <tr>
             <td colspan="6" style="text-align: center; padding: 20px; font-size: 18px; font-weight: bold; color: #8b5e3c;">
               Nema traženog proizvoda.
             </td>
           </tr>
         `;
-    }
   }
 });

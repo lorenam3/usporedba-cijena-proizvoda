@@ -12,7 +12,7 @@ body {
 }
 
 header {
-  padding: 30px;
+  padding: 50px;
   background: #8b5e3c;
   color: white;
   text-align: center;
@@ -20,15 +20,17 @@ header {
   font-weight: bold;
 }
 nav {
+  position: absolute;
+  top: 25px;
+  left: 25px;
   display: flex;
 }
 
 nav a {
   text-decoration: none;
   color: white;
-  font-size: 14px;
+  font-size: 16px;
   padding: 5px 10px;
-  transition: color 0.3s ease;
 }
 
 nav a:hover {
@@ -262,4 +264,101 @@ td:last-child {
 .page-btn.active {
   background: #0056b3;
   font-weight: bold;
+}
+
+.product-container {
+  display: none;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 15px;
+  padding: 20px;
+}
+
+.product-card {
+  background: white;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.card-actions {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+@media screen and (max-width: 768px) {
+  header h1 {
+    font-size: 28px; /* Smanjena veličina za tablete */
+  }
+
+  .top-bar {
+    flex-direction: column; /* Stavlja elemente jedan ispod drugog */
+    align-items: center; /* Centriranje */
+    text-align: center;
+    gap: 15px;
+  }
+  #product-table {
+    display: none; /* Sakrij tablicu */
+  }
+  .product-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 20px;
+  }
+  .product-card {
+    background: white;
+    border-radius: 12px;
+    padding: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  }
+
+  .product-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  }
+  .product-card h3 {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 8px;
+  }
+
+  .product-card p {
+    font-size: 14px;
+    color: #666;
+  }
+
+  .card-actions button {
+    padding: 8px 12px;
+    border-radius: 5px;
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  header h1 {
+    font-size: 25px; /* Još manja veličina za mobitele */
+  }
+
+  nav {
+    top: 20px;
+    left: 25px;
+    gap: 2px;
+  }
+
+  nav a {
+    font-size: 10px;
+    font-weight: lighter;
+    padding: 3px 2px;
+  }
+  .product-container {
+    grid-template-columns: 1fr; /* Samo jedna kartica po redu */
+    gap: 10px;
+  }
+
+  .product-card {
+    padding: 10px;
+  }
 }
