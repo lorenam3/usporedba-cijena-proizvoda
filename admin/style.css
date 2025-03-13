@@ -62,6 +62,18 @@ main {
   font-size: 24px;
 }
 
+.search-add {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 15px;
+}
+.search-add input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 200px;
+}
+
 table {
   width: 100%;
   border-collapse: collapse;
@@ -123,7 +135,7 @@ td:last-child {
   background: #dc3545;
 }
 
-.btn.edit:hover {
+.edit-btn:hover {
   background: #e0a800;
 }
 
@@ -134,12 +146,6 @@ td:last-child {
 th:last-child,
 td:last-child {
   text-align: center;
-}
-
-td:last-child {
-  display: flex;
-  justify-content: center;
-  gap: 5px;
 }
 
 #edit-modal,

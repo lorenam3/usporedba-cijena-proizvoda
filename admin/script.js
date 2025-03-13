@@ -95,6 +95,21 @@ function prikaziPaginaciju(products) {
 
 function addEventListeners(products) {
   document.querySelectorAll(".edit-btn").forEach((button) => {
+    button.removeEventListener("click", handleEditClick);
+    button.addEventListener("click", handleEditClick);
+  });
+
+  function handleEditClick(event) {
+    const productId = event.target.getAttribute("data-id");
+    const product = products.find((p) => p.id == productId);
+    openEditModal(product);
+  }
+
+  document.querySelectorAll(".delete-btn").forEach((button) => {
+    button.replaceWith(button.cloneNode(true));
+  });
+
+  document.querySelectorAll(".edit-btn").forEach((button) => {
     button.addEventListener("click", (event) => {
       const productId = event.target.getAttribute("data-id");
       const product = products.find((p) => p.id == productId);
@@ -143,6 +158,7 @@ function saveProductChanges(productId) {
   product.kategorija = document.getElementById("edit-category").value;
   product.cijena_2025 = parseFloat(document.getElementById("edit-price").value);
   product.posljednja_izmjena = new Date().toLocaleString("hr-HR");
+  product.istaknuto = document.getElementById("edit-highlighted").checked;
 
   localStorage.setItem("products", JSON.stringify(products));
 
@@ -155,11 +171,12 @@ function closeEditModal() {
 }
 
 function deleteProduct(id) {
+  let products = JSON.parse(localStorage.getItem("products")) || [];
+
   if (confirm("Jeste li sigurni da želite obrisati proizvod?")) {
-    let products = JSON.parse(localStorage.getItem("products")) || [];
     products = products.filter((p) => p.id != Number(id));
     localStorage.setItem("products", JSON.stringify(products));
-    fetchProducts();
+    displayProducts(products);
   }
 }
 
@@ -175,7 +192,7 @@ function saveNewProduct() {
   let products = JSON.parse(localStorage.getItem("products")) || [];
 
   const newProduct = {
-    id: products.length > 0 ? products[products.length - 1].id + 1 : 1,
+    id: Date.now(),
     naziv: document.getElementById("new-name").value,
     kategorija: document.getElementById("new-category").value,
     cijena_2024:
@@ -193,12 +210,9 @@ function saveNewProduct() {
   displayProducts(products);
 }
 
-document
-  .getElementById("open-modal")
-  .addEventListener("click", function (event) {
-    event.preventDefault();
-    document.getElementById("new-product-modal").style.display = "block";
-  });
+document.getElementById("add-product").addEventListener("click", function () {
+  document.getElementById("new-product-modal").style.display = "block";
+});
 
 document.querySelectorAll(".modal").forEach((modal) => {
   modal.addEventListener("click", function (e) {
@@ -206,4 +220,29 @@ document.querySelectorAll(".modal").forEach((modal) => {
       this.style.display = "none";
     }
   });
+});
+
+// Pretraga proizvoda
+document.getElementById("search").addEventListener("keypress", function (e) {
+  if (e.key === "Enter") {
+    let searchTerm = this.value.trim().toLowerCase();
+    let products = JSON.parse(localStorage.getItem("products")) || [];
+
+    let foundProducts = products.filter((p) =>
+      p.naziv.toLowerCase().includes(searchTerm)
+    );
+
+    if (foundProducts.length > 0) {
+      displayProducts(foundProducts);
+    } else {
+      const productList = document.getElementById("product-list");
+      productList.innerHTML = `
+          <tr>
+            <td colspan="6" style="text-align: center; padding: 20px; font-size: 18px; font-weight: bold; color: #8b5e3c;">
+              Nema traženog proizvoda.
+            </td>
+          </tr>
+        `;
+    }
+  }
 });
