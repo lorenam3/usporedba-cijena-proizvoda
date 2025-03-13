@@ -5,7 +5,10 @@ document.addEventListener("DOMContentLoaded", () => {
     fetch("products.json")
       .then((response) => response.json())
       .then((data) => {
-        localStorage.setItem("products", JSON.stringify(data));
+        localStorage.setItem(
+          "productsData",
+          JSON.stringify({ products: data })
+        );
         prikaziProizvode(data.filter((p) => p.istaknuto));
       })
       .catch((error) =>
@@ -25,8 +28,8 @@ function prikaziProizvode(proizvodi) {
     row.innerHTML = `
             <td>${proizvod.naziv}</td>
             <td>${proizvod.kategorija}</td>
-            <td>${proizvod.cijena_2024.toFixed(2)} €</td>
-            <td>${proizvod.cijena_2025.toFixed(2)} €</td>
+            <td>${(Number(proizvod.cijena_2024) || 0).toFixed(2)} €</td>
+            <td>${(Number(proizvod.cijena_2025) || 0).toFixed(2)} €</td>
             <td>${izracunajPostotak(
               proizvod.cijena_2024,
               proizvod.cijena_2025
@@ -75,7 +78,7 @@ document.getElementById("search").addEventListener("keypress", function (e) {
     let products = JSON.parse(localStorage.getItem("products")) || [];
 
     let foundProduct = products.find((p) =>
-      p.naziv.toLowerCase().includes(searchTerm)
+      p.naziv.toLowerCase().startsWith(searchTerm)
     );
 
     if (foundProduct) {

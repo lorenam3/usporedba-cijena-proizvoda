@@ -229,7 +229,7 @@ document.getElementById("search").addEventListener("keypress", function (e) {
     let products = JSON.parse(localStorage.getItem("products")) || [];
 
     let foundProducts = products.filter((p) =>
-      p.naziv.toLowerCase().includes(searchTerm)
+      p.naziv.toLowerCase().startsWith(searchTerm)
     );
 
     if (foundProducts.length > 0) {

@@ -1,322 +1,325 @@
-[
-  {
-    "id": 1,
-    "naziv": "Naranča",
-    "kategorija": "Voće i povrće",
-    "cijena_2024": 0.84,
-    "cijena_2025": 1.49,
-    "istaknuto": true,
-    "posljednja_izmjena": "11. 03. 2025. 14:30:00"
-  },
-  {
-    "id": 2,
-    "naziv": "Tekući sapun",
-    "kategorija": "Njega",
-    "cijena_2024": 5.19,
-    "cijena_2025": 5.69,
-    "istaknuto": false,
-    "posljednja_izmjena": "11. 03. 2025. 14:30:00"
-  },
+{
+  "lastUpdated": "11. 03. 2025. 14:30:00",
+  "products": [
+    {
+      "id": 1,
+      "naziv": "Naranča",
+      "kategorija": "Voće i povrće",
+      "cijena_2024": 0.84,
+      "cijena_2025": 1.49,
+      "istaknuto": true,
+      "posljednja_izmjena": "11. 03. 2025. 14:30:00"
+    },
+    {
+      "id": 2,
+      "naziv": "Tekući sapun",
+      "kategorija": "Njega",
+      "cijena_2024": 5.19,
+      "cijena_2025": 5.69,
+      "istaknuto": false,
+      "posljednja_izmjena": "11. 03. 2025. 14:30:00"
+    },
 
-  {
-    "id": 3,
-    "naziv": "Luk mladi",
-    "kategorija": "Voće i povrće",
-    "cijena_2024": 0.59,
-    "cijena_2025": 0.89,
-    "istaknuto": false,
-    "posljednja_izmjena": "11. 03. 2025. 14:30:00"
-  },
-  {
-    "id": 4,
-    "naziv": "Teleći but",
-    "kategorija": "Meso i riba",
-    "cijena_2024": 8.99,
-    "cijena_2025": 10.99,
-    "istaknuto": true,
-    "posljednja_izmjena": "11. 03. 2025. 14:30:00"
-  },
-  {
-    "id": 5,
-    "naziv": "Tikvice",
-    "kategorija": "Voće i povrće",
-    "cijena_2024": 1.39,
-    "cijena_2025": 1.99,
-    "istaknuto": false,
-    "posljednja_izmjena": "11. 03. 2025. 14:30:00"
-  },
-  {
-    "id": 6,
-    "naziv": "  Pileći file",
-    "kategorija": "Meso i riba",
-    "cijena_2024": 5.95,
-    "cijena_2025": 5.95,
-    "istaknuto": false,
-    "posljednja_izmjena": "11. 03. 2025. 14:30:00"
-  },
-  {
-    "id": 7,
-    "naziv": "Grožđe bijelo",
-    "kategorija": "Voće i povrće",
-    "cijena_2024": 2.49,
-    "cijena_2025": 2.69,
-    "istaknuto": false,
-    "posljednja_izmjena": "11. 03. 2025. 14:30:00"
-  },
-  {
-    "id": 8,
-    "naziv": "Čevapčići",
-    "kategorija": "Meso i riba",
-    "cijena_2024": 2.99,
-    "cijena_2025": 3.29,
-    "istaknuto": true,
-    "posljednja_izmjena": "11. 03. 2025. 14:30:00"
-  },
-  {
-    "id": 9,
-    "naziv": "Vino",
-    "kategorija": "Piće",
-    "cijena_2024": 4.19,
-    "cijena_2025": 6.55,
-    "istaknuto": false,
-    "posljednja_izmjena": "11. 03. 2025. 14:30:00"
-  },
+    {
+      "id": 3,
+      "naziv": "Luk mladi",
+      "kategorija": "Voće i povrće",
+      "cijena_2024": 0.59,
+      "cijena_2025": 0.89,
+      "istaknuto": false,
+      "posljednja_izmjena": "11. 03. 2025. 14:30:00"
+    },
+    {
+      "id": 4,
+      "naziv": "Teleći but",
+      "kategorija": "Meso i riba",
+      "cijena_2024": 8.99,
+      "cijena_2025": 10.99,
+      "istaknuto": true,
+      "posljednja_izmjena": "11. 03. 2025. 14:30:00"
+    },
+    {
+      "id": 5,
+      "naziv": "Tikvice",
+      "kategorija": "Voće i povrće",
+      "cijena_2024": 1.39,
+      "cijena_2025": 1.99,
+      "istaknuto": false,
+      "posljednja_izmjena": "11. 03. 2025. 14:30:00"
+    },
+    {
+      "id": 6,
+      "naziv": "  Pileći file",
+      "kategorija": "Meso i riba",
+      "cijena_2024": 5.95,
+      "cijena_2025": 5.95,
+      "istaknuto": false,
+      "posljednja_izmjena": "11. 03. 2025. 14:30:00"
+    },
+    {
+      "id": 7,
+      "naziv": "Grožđe bijelo",
+      "kategorija": "Voće i povrće",
+      "cijena_2024": 2.49,
+      "cijena_2025": 2.69,
+      "istaknuto": false,
+      "posljednja_izmjena": "11. 03. 2025. 14:30:00"
+    },
+    {
+      "id": 8,
+      "naziv": "Čevapčići",
+      "kategorija": "Meso i riba",
+      "cijena_2024": 2.99,
+      "cijena_2025": 3.29,
+      "istaknuto": true,
+      "posljednja_izmjena": "11. 03. 2025. 14:30:00"
+    },
+    {
+      "id": 9,
+      "naziv": "Vino",
+      "kategorija": "Piće",
+      "cijena_2024": 4.19,
+      "cijena_2025": 6.55,
+      "istaknuto": false,
+      "posljednja_izmjena": "11. 03. 2025. 14:30:00"
+    },
 
-  {
-    "id": 10,
-    "naziv": "Salata",
-    "kategorija": "Voće i povrće",
-    "cijena_2024": 0.69,
-    "cijena_2025": 0.89,
-    "istaknuto": true,
-    "posljednja_izmjena": "11. 03. 2025. 14:30:00"
-  },
-  {
-    "id": 11,
-    "naziv": "Papirnati ručnici",
-    "kategorija": "Potrepštine",
-    "cijena_2024": 2.25,
-    "cijena_2025": 2.52,
-    "istaknuto": false,
-    "posljednja_izmjena": "11. 03. 2025. 14:30:00"
-  },
-  {
-    "id": 12,
-    "naziv": "Gamberi/kg",
-    "kategorija": "Meso i riba",
-    "cijena_2024": 15.96,
-    "cijena_2025": 23.96,
-    "istaknuto": false,
-    "posljednja_izmjena": "11. 03. 2025. 14:30:00"
-  },
-  {
-    "id": 13,
-    "naziv": "Plodovi mora",
-    "kategorija": "Meso i riba",
-    "cijena_2024": 1.99,
-    "cijena_2025": 2.79,
-    "istaknuto": false,
-    "posljednja_izmjena": "11. 03. 2025. 14:30:00"
-  },
-  {
-    "id": 14,
-    "naziv": "Bomboni",
-    "kategorija": "Slatkiši",
-    "cijena_2024": 2.0,
-    "cijena_2025": 2.19,
-    "istaknuto": false,
-    "posljednja_izmjena": "11. 03. 2025. 14:30:00"
-  },
-  {
-    "id": 15,
-    "naziv": "Pileći rasjek",
-    "kategorija": "Meso i riba",
-    "cijena_2024": 3.98,
-    "cijena_2025": 3.99,
-    "istaknuto": false,
-    "posljednja_izmjena": "11. 03. 2025. 14:30:00"
-  },
-  {
-    "id": 16,
-    "naziv": "Keksi",
-    "kategorija": "Slatkiši",
-    "cijena_2024": 2.53,
-    "cijena_2025": 2.99,
-    "istaknuto": true,
-    "posljednja_izmjena": "11. 03. 2025. 14:30:00"
-  },
-  {
-    "id": 17,
-    "naziv": "Čokolada",
-    "kategorija": "Slatkiši",
-    "cijena_2024": 0.95,
-    "cijena_2025": 2.09,
-    "istaknuto": false,
-    "posljednja_izmjena": "11. 03. 2025. 14:30:00"
-  },
-  {
-    "id": 18,
-    "naziv": "Oslić filet",
-    "kategorija": "Meso i riba",
-    "cijena_2024": 3.99,
-    "cijena_2025": 3.83,
-    "istaknuto": false,
-    "posljednja_izmjena": "11. 03. 2025. 14:30:00"
-  },
-  {
-    "id": 19,
-    "naziv": "Omekšivač rublja",
-    "kategorija": "Potrepštine",
-    "cijena_2024": 8.29,
-    "cijena_2025": 8.99,
-    "istaknuto": false,
-    "posljednja_izmjena": "11. 03. 2025. 14:30:00"
-  },
-  {
-    "id": 20,
-    "naziv": "Napolitanke",
-    "kategorija": "Slatkiši",
-    "cijena_2024": 1.99,
-    "cijena_2025": 3.19,
-    "istaknuto": false,
-    "posljednja_izmjena": "11. 03. 2025. 14:30:00"
-  },
-  {
-    "id": 21,
-    "naziv": "Sredstvo za čišćenje",
-    "kategorija": "Potrepštine",
-    "cijena_2024": 2.19,
-    "cijena_2025": 2.59,
-    "istaknuto": false,
-    "posljednja_izmjena": "11. 03. 2025. 14:30:00"
-  },
-  {
-    "id": 22,
-    "naziv": "Negazirani sok",
-    "kategorija": "Piće",
-    "cijena_2024": 0.8,
-    "cijena_2025": 0.89,
-    "istaknuto": true,
-    "posljednja_izmjena": "11. 03. 2025. 14:30:00"
-  },
+    {
+      "id": 10,
+      "naziv": "Salata",
+      "kategorija": "Voće i povrće",
+      "cijena_2024": 0.69,
+      "cijena_2025": 0.89,
+      "istaknuto": true,
+      "posljednja_izmjena": "11. 03. 2025. 14:30:00"
+    },
+    {
+      "id": 11,
+      "naziv": "Papirnati ručnici",
+      "kategorija": "Potrepštine",
+      "cijena_2024": 2.25,
+      "cijena_2025": 2.52,
+      "istaknuto": false,
+      "posljednja_izmjena": "11. 03. 2025. 14:30:00"
+    },
+    {
+      "id": 12,
+      "naziv": "Gamberi/kg",
+      "kategorija": "Meso i riba",
+      "cijena_2024": 15.96,
+      "cijena_2025": 23.96,
+      "istaknuto": false,
+      "posljednja_izmjena": "11. 03. 2025. 14:30:00"
+    },
+    {
+      "id": 13,
+      "naziv": "Plodovi mora",
+      "kategorija": "Meso i riba",
+      "cijena_2024": 1.99,
+      "cijena_2025": 2.79,
+      "istaknuto": false,
+      "posljednja_izmjena": "11. 03. 2025. 14:30:00"
+    },
+    {
+      "id": 14,
+      "naziv": "Bomboni",
+      "kategorija": "Slatkiši",
+      "cijena_2024": 2.0,
+      "cijena_2025": 2.19,
+      "istaknuto": false,
+      "posljednja_izmjena": "11. 03. 2025. 14:30:00"
+    },
+    {
+      "id": 15,
+      "naziv": "Pileći rasjek",
+      "kategorija": "Meso i riba",
+      "cijena_2024": 3.98,
+      "cijena_2025": 3.99,
+      "istaknuto": false,
+      "posljednja_izmjena": "11. 03. 2025. 14:30:00"
+    },
+    {
+      "id": 16,
+      "naziv": "Keksi",
+      "kategorija": "Slatkiši",
+      "cijena_2024": 2.53,
+      "cijena_2025": 2.99,
+      "istaknuto": true,
+      "posljednja_izmjena": "11. 03. 2025. 14:30:00"
+    },
+    {
+      "id": 17,
+      "naziv": "Čokolada",
+      "kategorija": "Slatkiši",
+      "cijena_2024": 0.95,
+      "cijena_2025": 2.09,
+      "istaknuto": false,
+      "posljednja_izmjena": "11. 03. 2025. 14:30:00"
+    },
+    {
+      "id": 18,
+      "naziv": "Oslić filet",
+      "kategorija": "Meso i riba",
+      "cijena_2024": 3.99,
+      "cijena_2025": 3.83,
+      "istaknuto": false,
+      "posljednja_izmjena": "11. 03. 2025. 14:30:00"
+    },
+    {
+      "id": 19,
+      "naziv": "Omekšivač rublja",
+      "kategorija": "Potrepštine",
+      "cijena_2024": 8.29,
+      "cijena_2025": 8.99,
+      "istaknuto": false,
+      "posljednja_izmjena": "11. 03. 2025. 14:30:00"
+    },
+    {
+      "id": 20,
+      "naziv": "Napolitanke",
+      "kategorija": "Slatkiši",
+      "cijena_2024": 1.99,
+      "cijena_2025": 3.19,
+      "istaknuto": false,
+      "posljednja_izmjena": "11. 03. 2025. 14:30:00"
+    },
+    {
+      "id": 21,
+      "naziv": "Sredstvo za čišćenje",
+      "kategorija": "Potrepštine",
+      "cijena_2024": 2.19,
+      "cijena_2025": 2.59,
+      "istaknuto": false,
+      "posljednja_izmjena": "11. 03. 2025. 14:30:00"
+    },
+    {
+      "id": 22,
+      "naziv": "Negazirani sok",
+      "kategorija": "Piće",
+      "cijena_2024": 0.8,
+      "cijena_2025": 0.89,
+      "istaknuto": true,
+      "posljednja_izmjena": "11. 03. 2025. 14:30:00"
+    },
 
-  {
-    "id": 23,
-    "naziv": "Voda",
-    "kategorija": "Piće",
-    "cijena_2024": 0.89,
-    "cijena_2025": 0.99,
-    "istaknuto": false,
-    "posljednja_izmjena": "11. 03. 2025. 14:30:00"
-  },
-  {
-    "id": 24,
-    "naziv": "Lizalica",
-    "kategorija": "Slatkiši",
-    "cijena_2024": 0.85,
-    "cijena_2025": 1.15,
-    "istaknuto": false,
-    "posljednja_izmjena": "11. 03. 2025. 14:30:00"
-  },
-  {
-    "id": 25,
-    "naziv": "Sok od jabuke",
-    "kategorija": "Piće",
-    "cijena_2024": 1.85,
-    "cijena_2025": 2.19,
-    "istaknuto": false,
-    "posljednja_izmjena": "11. 03. 2025. 14:30:00"
-  },
-  {
-    "id": 26,
-    "naziv": "Izotonični napitak",
-    "kategorija": "Piće",
-    "cijena_2024": 1.46,
-    "cijena_2025": 1.59,
-    "istaknuto": false,
-    "posljednja_izmjena": "11. 03. 2025. 14:30:00"
-  },
-  {
-    "id": 27,
-    "naziv": "Paprika",
-    "kategorija": "Voće i povrće",
-    "cijena_2024": 1.99,
-    "cijena_2025": 2.49,
-    "istaknuto": false,
-    "posljednja_izmjena": "11. 03. 2025. 14:30:00"
-  },
-  {
-    "id": 28,
-    "naziv": "Krema za lice",
-    "kategorija": "Njega",
-    "cijena_2024": 9.09,
-    "cijena_2025": 9.39,
-    "istaknuto": true,
-    "posljednja_izmjena": "11. 03. 2025. 14:30:00"
-  },
-  {
-    "id": 29,
-    "naziv": "Kiseli kupus",
-    "kategorija": "Voće i povrće",
-    "cijena_2024": 1.59,
-    "cijena_2025": 1.99,
-    "istaknuto": false,
-    "posljednja_izmjena": "11. 03. 2025. 14:30:00"
-  },
+    {
+      "id": 23,
+      "naziv": "Voda",
+      "kategorija": "Piće",
+      "cijena_2024": 0.89,
+      "cijena_2025": 0.99,
+      "istaknuto": false,
+      "posljednja_izmjena": "11. 03. 2025. 14:30:00"
+    },
+    {
+      "id": 24,
+      "naziv": "Lizalica",
+      "kategorija": "Slatkiši",
+      "cijena_2024": 0.85,
+      "cijena_2025": 1.15,
+      "istaknuto": false,
+      "posljednja_izmjena": "11. 03. 2025. 14:30:00"
+    },
+    {
+      "id": 25,
+      "naziv": "Sok od jabuke",
+      "kategorija": "Piće",
+      "cijena_2024": 1.85,
+      "cijena_2025": 2.19,
+      "istaknuto": false,
+      "posljednja_izmjena": "11. 03. 2025. 14:30:00"
+    },
+    {
+      "id": 26,
+      "naziv": "Izotonični napitak",
+      "kategorija": "Piće",
+      "cijena_2024": 1.46,
+      "cijena_2025": 1.59,
+      "istaknuto": false,
+      "posljednja_izmjena": "11. 03. 2025. 14:30:00"
+    },
+    {
+      "id": 27,
+      "naziv": "Paprika",
+      "kategorija": "Voće i povrće",
+      "cijena_2024": 1.99,
+      "cijena_2025": 2.49,
+      "istaknuto": false,
+      "posljednja_izmjena": "11. 03. 2025. 14:30:00"
+    },
+    {
+      "id": 28,
+      "naziv": "Krema za lice",
+      "kategorija": "Njega",
+      "cijena_2024": 9.09,
+      "cijena_2025": 9.39,
+      "istaknuto": true,
+      "posljednja_izmjena": "11. 03. 2025. 14:30:00"
+    },
+    {
+      "id": 29,
+      "naziv": "Kiseli kupus",
+      "kategorija": "Voće i povrće",
+      "cijena_2024": 1.59,
+      "cijena_2025": 1.99,
+      "istaknuto": false,
+      "posljednja_izmjena": "11. 03. 2025. 14:30:00"
+    },
 
-  {
-    "id": 30,
-    "naziv": "Šampon za kosu",
-    "kategorija": "Njega",
-    "cijena_2024": 3.64,
-    "cijena_2025": 3.89,
-    "istaknuto": false,
-    "posljednja_izmjena": "11. 03. 2025. 14:30:00"
-  },
-  {
-    "id": 31,
-    "naziv": "Pasta za zube",
-    "kategorija": "Njega",
-    "cijena_2024": 5.19,
-    "cijena_2025": 5.55,
-    "istaknuto": false,
-    "posljednja_izmjena": "11. 03. 2025. 14:30:00"
-  },
-  {
-    "id": 32,
-    "naziv": "Deterdžent za pranje posuđa",
-    "kategorija": "Potrepštine",
-    "cijena_2024": 2.52,
-    "cijena_2025": 2.52,
-    "istaknuto": false,
-    "posljednja_izmjena": "11. 03. 2025. 14:30:00"
-  },
-  {
-    "id": 33,
-    "naziv": "Toaletni papir",
-    "kategorija": "Njega",
-    "cijena_2024": 3.99,
-    "cijena_2025": 4.99,
-    "istaknuto": false,
-    "posljednja_izmjena": "11. 03. 2025. 14:30:00"
-  },
+    {
+      "id": 30,
+      "naziv": "Šampon za kosu",
+      "kategorija": "Njega",
+      "cijena_2024": 3.64,
+      "cijena_2025": 3.89,
+      "istaknuto": false,
+      "posljednja_izmjena": "11. 03. 2025. 14:30:00"
+    },
+    {
+      "id": 31,
+      "naziv": "Pasta za zube",
+      "kategorija": "Njega",
+      "cijena_2024": 5.19,
+      "cijena_2025": 5.55,
+      "istaknuto": false,
+      "posljednja_izmjena": "11. 03. 2025. 14:30:00"
+    },
+    {
+      "id": 32,
+      "naziv": "Deterdžent za pranje posuđa",
+      "kategorija": "Potrepštine",
+      "cijena_2024": 2.52,
+      "cijena_2025": 2.52,
+      "istaknuto": false,
+      "posljednja_izmjena": "11. 03. 2025. 14:30:00"
+    },
+    {
+      "id": 33,
+      "naziv": "Toaletni papir",
+      "kategorija": "Njega",
+      "cijena_2024": 3.99,
+      "cijena_2025": 4.99,
+      "istaknuto": false,
+      "posljednja_izmjena": "11. 03. 2025. 14:30:00"
+    },
 
-  {
-    "id": 34,
-    "naziv": "Sredstvo za podove",
-    "kategorija": "Potrepštine",
-    "cijena_2024": 1.59,
-    "cijena_2025": 1.59,
-    "istaknuto": false,
-    "posljednja_izmjena": "11. 03. 2025. 14:30:00"
-  },
-  {
-    "id": 35,
-    "naziv": "Blazinice",
-    "kategorija": "Njega",
-    "cijena_2024": 2.59,
-    "cijena_2025": 2.99,
-    "istaknuto": false,
-    "posljednja_izmjena": "11. 03. 2025. 14:30:00"
-  }
-]
+    {
+      "id": 34,
+      "naziv": "Sredstvo za podove",
+      "kategorija": "Potrepštine",
+      "cijena_2024": 1.59,
+      "cijena_2025": 1.59,
+      "istaknuto": false,
+      "posljednja_izmjena": "11. 03. 2025. 14:30:00"
+    },
+    {
+      "id": 35,
+      "naziv": "Blazinice",
+      "kategorija": "Njega",
+      "cijena_2024": 2.59,
+      "cijena_2025": 2.99,
+      "istaknuto": false,
+      "posljednja_izmjena": "11. 03. 2025. 14:30:00"
+    }
+  ]
+}
