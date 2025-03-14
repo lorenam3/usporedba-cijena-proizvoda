@@ -19,27 +19,20 @@ const productsPerPage = 12;
 let currentPage = 1;
 
 function fetchProducts() {
-  let storedData = JSON.parse(localStorage.getItem("products")) || [];
+  let products = JSON.parse(localStorage.getItem("products"))?.products || [];
 
-  if (storedData.length === 0) {
+  if (products.length === 0) {
     fetch("products.json")
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        return response.json();
-      })
+      .then((response) => response.json())
       .then((data) => {
-        localStorage.setItem("products", JSON.stringify(data));
-        displayProducts(data);
-        addEventListeners(data);
+        localStorage.setItem("products", JSON.stringify({ products: data }));
+        displayProducts(data.filter((p) => p.istaknuto));
       })
       .catch((error) =>
-        console.error("Greška pri dohvaćanju podataka:", error)
+        console.error("Greška pri učitavanju podataka:", error)
       );
   } else {
-    displayProducts(storedData);
-    addEventListeners(storedData);
+    displayProducts(products.filter((p) => p.istaknuto));
   }
 }
 
