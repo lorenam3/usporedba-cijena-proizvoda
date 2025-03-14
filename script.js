@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
-  let products = JSON.parse(localStorage.getItem("products")) || [];
+  let products =
+    JSON.parse(localStorage.getItem("productsData"))?.products || [];
 
   if (products.length === 0) {
     fetch("products.json")
