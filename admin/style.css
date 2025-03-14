@@ -354,7 +354,7 @@ td:last-child {
     padding: 3px 2px;
   }
   .product-container {
-    grid-template-columns: 1fr; /* Samo jedna kartica po redu */
+    grid-template-columns: 1fr;
     gap: 10px;
   }
 
