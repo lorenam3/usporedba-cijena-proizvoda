@@ -19,9 +19,9 @@ const productsPerPage = 12;
 let currentPage = 1;
 
 function fetchProducts() {
-  let products = JSON.parse(localStorage.getItem("products")) || [];
+  let productsData = JSON.parse(localStorage.getItem("products")) || [];
 
-  if (products.length === 0) {
+  if (productsData.length === 0) {
     fetch("products.json")
       .then((response) => {
         if (!response.ok) {
@@ -30,14 +30,16 @@ function fetchProducts() {
         return response.json();
       })
       .then((data) => {
+        const products = data.products || [];
         localStorage.setItem("products", JSON.stringify(data));
-        displayProducts(data);
-        addEventListeners(data);
+        displayProducts(products);
+        addEventListeners(products);
       })
       .catch((error) =>
         console.error("Greška pri dohvaćanju podataka:", error)
       );
   } else {
+    const products = productsData.products || productsData;
     displayProducts(products);
     addEventListeners(products);
   }
