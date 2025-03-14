@@ -89,44 +89,45 @@ document.getElementById("search").addEventListener("keypress", function (e) {
       ? productsData.products
       : [];
 
-    if (Array.isArray(products)) {
-      let foundProduct = products.find((p) =>
-        p.naziv.toLowerCase().startsWith(searchTerm)
+    if (products.length === 0) {
+      console.error("Nema proizvoda u localStorage.");
+      return;
+    }
+
+    let foundProduct = products.find((p) =>
+      p.naziv.toLowerCase().startsWith(searchTerm)
+    );
+
+    if (foundProduct) {
+      prikaziProizvode([foundProduct]);
+
+      let category = foundProduct.kategorija.toLowerCase();
+      let categoryButton = document.querySelector(
+        `.tab[data-category="${category}"]`
       );
-
-      if (foundProduct) {
-        prikaziProizvode([foundProduct]);
-
-        let category = foundProduct.kategorija.toLowerCase();
-        let categoryButton = document.querySelector(
-          `.tab[data-category="${category}"]`
-        );
-        if (categoryButton) {
-          categoryButton.click();
-        }
-      } else {
-        const productList = document.getElementById("product-list");
-        productList.innerHTML = `
-          <tr>
-            <td id="info" colspan="5" style="text-align: center;">Nema traženog proizvoda.</td>
-          </tr>
-          <tr>
-            <td colspan="5" style="text-align: center;">
-              <button id="add-product-btn">Dodaj novi proizvod</button>
-            </td>
-          </tr>
-        `;
-
-        azurirajUkupno([]);
-
-        document
-          .getElementById("add-product-btn")
-          .addEventListener("click", () => {
-            window.location.href = "admin/admin.html";
-          });
+      if (categoryButton) {
+        categoryButton.click();
       }
     } else {
-      console.error("Pogrešan format proizvoda u localStorage.");
+      const productList = document.getElementById("product-list");
+      productList.innerHTML = `
+        <tr>
+          <td id="info" colspan="5" style="text-align: center;">Nema traženog proizvoda.</td>
+        </tr>
+        <tr>
+          <td colspan="5" style="text-align: center;">
+            <button id="add-product-btn">Dodaj novi proizvod</button>
+          </td>
+        </tr>
+      `;
+
+      azurirajUkupno([]);
+
+      document
+        .getElementById("add-product-btn")
+        .addEventListener("click", () => {
+          window.location.href = "admin/admin.html";
+        });
     }
   }
 });
