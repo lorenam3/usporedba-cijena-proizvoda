@@ -19,9 +19,9 @@ const productsPerPage = 12;
 let currentPage = 1;
 
 function fetchProducts() {
-  let products = JSON.parse(localStorage.getItem("products")) || [];
+  let storedData = JSON.parse(localStorage.getItem("products")) || [];
 
-  if (products.length === 0) {
+  if (storedData.length === 0) {
     fetch("products.json")
       .then((response) => {
         if (!response.ok) {
@@ -38,14 +38,20 @@ function fetchProducts() {
         console.error("Greška pri dohvaćanju podataka:", error)
       );
   } else {
-    displayProducts(products);
-    addEventListeners(products);
+    displayProducts(storedData);
+    addEventListeners(storedData);
   }
 }
 
 function displayProducts(products) {
   const productList = document.getElementById("product-list");
   const productContainer = document.querySelector(".product-container");
+
+  if (products.length === 0) {
+    productList.innerHTML = `<tr><td colspan="6">Nema dostupnih proizvoda.</td></tr>`;
+    productContainer.innerHTML = "<p>Nema proizvoda za prikazivanje.</p>";
+    return;
+  }
 
   productList.innerHTML = "";
   productContainer.innerHTML = "";
