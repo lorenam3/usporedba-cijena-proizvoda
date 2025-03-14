@@ -83,7 +83,11 @@ function azurirajUkupno(proizvodi) {
 document.getElementById("search").addEventListener("keypress", function (e) {
   if (e.key === "Enter") {
     let searchTerm = this.value.trim().toLowerCase();
-    let products = JSON.parse(localStorage.getItem("products")) || [];
+
+    let productsData = JSON.parse(localStorage.getItem("products")) || {};
+    let products = Array.isArray(productsData?.products)
+      ? productsData.products
+      : [];
 
     let foundProduct = products.find((p) =>
       p.naziv.toLowerCase().startsWith(searchTerm)
