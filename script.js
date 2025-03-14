@@ -20,15 +20,24 @@ function prikaziProizvode(proizvodi) {
   const productList = document.getElementById("product-list");
   productList.innerHTML = "";
 
+  if (proizvodi.length === 0) {
+    productList.innerHTML =
+      "<tr><td colspan='5'>Nema proizvoda za prikazivanje.</td></tr>";
+    return;
+  }
+
   proizvodi.forEach((proizvod) => {
     const row = document.createElement("tr");
     row.innerHTML = `
-      <td>${proizvod.naziv}</td>
-      <td>${proizvod.kategorija}</td>
-      <td>${(Number(proizvod.cijena_2024) || 0).toFixed(2)} €</td>
-      <td>${(Number(proizvod.cijena_2025) || 0).toFixed(2)} €</td>
-      <td>${izracunajPostotak(proizvod.cijena_2024, proizvod.cijena_2025)}</td>
-    `;
+            <td>${proizvod.naziv}</td>
+            <td>${proizvod.kategorija}</td>
+            <td>${(Number(proizvod.cijena_2024) || 0).toFixed(2)} €</td>
+            <td>${(Number(proizvod.cijena_2025) || 0).toFixed(2)} €</td>
+            <td>${izracunajPostotak(
+              proizvod.cijena_2024,
+              proizvod.cijena_2025
+            )}</td>
+        `;
     productList.appendChild(row);
   });
 
