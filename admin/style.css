@@ -289,17 +289,17 @@ td:last-child {
 
 @media screen and (max-width: 768px) {
   header h1 {
-    font-size: 28px; /* Smanjena veličina za tablete */
+    font-size: 28px; 
   }
 
   .top-bar {
-    flex-direction: column; /* Stavlja elemente jedan ispod drugog */
-    align-items: center; /* Centriranje */
+    flex-direction: column; 
+    align-items: center; 
     text-align: center;
     gap: 15px;
   }
   #product-table {
-    display: none; /* Sakrij tablicu */
+    display: none; 
   }
   .product-container {
     display: grid;
@@ -339,7 +339,7 @@ td:last-child {
 
 @media screen and (max-width: 480px) {
   header h1 {
-    font-size: 25px; /* Još manja veličina za mobitele */
+    font-size: 25px; 
   }
 
   nav {
@@ -354,7 +354,7 @@ td:last-child {
     padding: 3px 2px;
   }
   .product-container {
-    grid-template-columns: 1fr; /* Samo jedna kartica po redu */
+    grid-template-columns: 1fr; 
     gap: 10px;
   }
 
