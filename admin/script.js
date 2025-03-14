@@ -17,7 +17,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 const productsPerPage = 12;
 let currentPage = 1;
-
 function fetchProducts() {
   let productsData = JSON.parse(localStorage.getItem("products")) || [];
 
@@ -31,7 +30,7 @@ function fetchProducts() {
       })
       .then((data) => {
         const products = data.products || [];
-        localStorage.setItem("products", JSON.stringify(data));
+        localStorage.setItem("products", JSON.stringify(products));
         displayProducts(products);
         addEventListeners(products);
       })
@@ -39,12 +38,13 @@ function fetchProducts() {
         console.error("Greška pri dohvaćanju podataka:", error)
       );
   } else {
-    const products = productsData.products || productsData;
+    const products = Array.isArray(productsData)
+      ? productsData
+      : productsData.products || [];
     displayProducts(products);
     addEventListeners(products);
   }
 }
-
 function displayProducts(products) {
   const productList = document.getElementById("product-list");
   const productContainer = document.querySelector(".product-container");
@@ -231,7 +231,11 @@ function closeNewProductModal() {
 }
 
 function saveNewProduct() {
-  let products = JSON.parse(localStorage.getItem("products")) || [];
+  let products = JSON.parse(localStorage.getItem("products"));
+
+  if (!Array.isArray(products)) {
+    products = [];
+  }
 
   const newProduct = {
     id: Date.now(),
