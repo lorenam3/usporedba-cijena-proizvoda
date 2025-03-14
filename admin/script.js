@@ -22,8 +22,13 @@ function fetchProducts() {
   let products = JSON.parse(localStorage.getItem("products")) || [];
 
   if (products.length === 0) {
-    fetch("../products.json")
-      .then((response) => response.json())
+    fetch("products.json")
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return response.json();
+      })
       .then((data) => {
         localStorage.setItem("products", JSON.stringify(data));
         displayProducts(data);
