@@ -31,7 +31,8 @@ function fetchProducts() {
       })
       .then((data) => {
         const products = data.products || [];
-        localStorage.setItem("products", JSON.stringify(data));
+
+        localStorage.setItem("products", JSON.stringify(products));
         displayProducts(products);
         addEventListeners(products);
       })
@@ -39,7 +40,7 @@ function fetchProducts() {
         console.error("Greška pri dohvaćanju podataka:", error)
       );
   } else {
-    const products = productsData.products || productsData;
+    const products = Array.isArray(productsData) ? productsData : [];
     displayProducts(products);
     addEventListeners(products);
   }
@@ -256,6 +257,7 @@ function saveNewProduct() {
   };
 
   products.unshift(newProduct);
+
   localStorage.setItem("products", JSON.stringify(products));
 
   closeNewProductModal();
