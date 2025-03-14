@@ -31,8 +31,7 @@ function fetchProducts() {
       })
       .then((data) => {
         const products = data.products || [];
-
-        localStorage.setItem("products", JSON.stringify(products));
+        localStorage.setItem("products", JSON.stringify(data));
         displayProducts(products);
         addEventListeners(products);
       })
@@ -40,7 +39,7 @@ function fetchProducts() {
         console.error("Greška pri dohvaćanju podataka:", error)
       );
   } else {
-    const products = Array.isArray(productsData) ? productsData : [];
+    const products = productsData.products || productsData;
     displayProducts(products);
     addEventListeners(products);
   }
@@ -184,13 +183,7 @@ function openEditModal(product) {
 }
 
 function saveProductChanges(productId) {
-  let products = JSON.parse(localStorage.getItem("products"));
-
-  if (!Array.isArray(products)) {
-    console.error("Podaci o proizvodima nisu ispravno spremljeni!");
-    return;
-  }
-
+  let products = JSON.parse(localStorage.getItem("products")) || [];
   let product = products.find((p) => p.id == productId);
 
   if (!product) {
@@ -238,11 +231,7 @@ function closeNewProductModal() {
 }
 
 function saveNewProduct() {
-  let products = JSON.parse(localStorage.getItem("products"));
-
-  if (!Array.isArray(products)) {
-    products = [];
-  }
+  let products = JSON.parse(localStorage.getItem("products")) || [];
 
   const newProduct = {
     id: Date.now(),
@@ -257,7 +246,6 @@ function saveNewProduct() {
   };
 
   products.unshift(newProduct);
-
   localStorage.setItem("products", JSON.stringify(products));
 
   closeNewProductModal();
