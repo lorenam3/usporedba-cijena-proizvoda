@@ -49,11 +49,17 @@ function displayProducts(products) {
   const productList = document.getElementById("product-list");
   const productContainer = document.querySelector(".product-container");
 
+  if (!Array.isArray(products)) {
+    console.error("Očekivao sam niz, ali dobio sam:", products);
+    return;
+  }
+
   productList.innerHTML = "";
   productContainer.innerHTML = "";
 
   const start = (currentPage - 1) * productsPerPage;
   const end = start + productsPerPage;
+
   const paginatedProducts = products.slice(start, end);
 
   paginatedProducts.forEach((product) => {
