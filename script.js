@@ -1,14 +1,11 @@
 document.addEventListener("DOMContentLoaded", () => {
-  let products = JSON.parse(localStorage.getItem("products")) || [];
+  let products = JSON.parse(localStorage.getItem("products"))?.products || [];
 
   if (products.length === 0) {
     fetch("products.json")
       .then((response) => response.json())
       .then((data) => {
-        localStorage.setItem(
-          "productsData",
-          JSON.stringify({ products: data })
-        );
+        localStorage.setItem("products", JSON.stringify({ products: data }));
         prikaziProizvode(data.filter((p) => p.istaknuto));
       })
       .catch((error) =>
@@ -26,15 +23,12 @@ function prikaziProizvode(proizvodi) {
   proizvodi.forEach((proizvod) => {
     const row = document.createElement("tr");
     row.innerHTML = `
-            <td>${proizvod.naziv}</td>
-            <td>${proizvod.kategorija}</td>
-            <td>${(Number(proizvod.cijena_2024) || 0).toFixed(2)} €</td>
-            <td>${(Number(proizvod.cijena_2025) || 0).toFixed(2)} €</td>
-            <td>${izracunajPostotak(
-              proizvod.cijena_2024,
-              proizvod.cijena_2025
-            )}</td>
-        `;
+      <td>${proizvod.naziv}</td>
+      <td>${proizvod.kategorija}</td>
+      <td>${(Number(proizvod.cijena_2024) || 0).toFixed(2)} €</td>
+      <td>${(Number(proizvod.cijena_2025) || 0).toFixed(2)} €</td>
+      <td>${izracunajPostotak(proizvod.cijena_2024, proizvod.cijena_2025)}</td>
+    `;
     productList.appendChild(row);
   });
 
