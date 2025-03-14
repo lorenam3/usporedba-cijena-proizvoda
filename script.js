@@ -95,7 +95,7 @@ document.getElementById("search").addEventListener("keypress", function (e) {
       const productList = document.getElementById("product-list");
       productList.innerHTML = `
               <tr>
-                <td colspan="5" style="text-align: center;">Nema traženog proizvoda.</td>
+                <td id="info" colspan="5" style="text-align: center;">Nema traženog proizvoda.</td>
               </tr>
               <tr>
                 <td colspan="5" style="text-align: center;">

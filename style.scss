@@ -44,6 +44,13 @@ header {
   font-weight: bold;
 }
 
+.search-add input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 200px;
+}
+
 footer {
   background: $primary-color;
   color: white;
@@ -51,6 +58,7 @@ footer {
   padding: 15px;
   font-size: 14px;
   width: 100%;
+  margin-top: auto;
 }
 
 main {
@@ -62,44 +70,32 @@ main {
 
 .top-bar {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   align-items: center;
   margin-bottom: 15px;
+  text-align: center;
 
   h2 {
     font-size: 24px;
+    margin-bottom: 10px;
   }
 
   .tabs {
     display: flex;
-    gap: 10px;
-
-    button {
-      background: $secondary-color;
-      color: white;
-      border: none;
-      padding: 8px 12px;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: 0.3s;
-
-      &:hover {
-        background: darken($secondary-color, 10%);
-      }
-    }
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
   }
-}
 
-.search-add {
-  display: flex;
-  justify-content: flex-end;
-  margin-bottom: 15px;
-
-  input {
-    padding: 8px;
-    border: 1px solid #ccc;
+  .tabs button {
+    background: $secondary-color;
+    color: white;
+    border: none;
+    padding: 6px 10px;
     border-radius: 5px;
-    width: 200px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 14px;
   }
 }
 
@@ -152,5 +148,84 @@ table {
     td:last-child {
       font-weight: bold;
     }
+  }
+
+  #add-product-btn {
+    background: #d2b48c;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  #info {
+    font-weight: bold;
+    font-size: 15px;
+  }
+}
+
+/* Media Queries za tablet i mobilne uređaje */
+@media screen and (max-width: 768px) {
+  header h1 {
+    font-size: 22px;
+  }
+
+  .search-add {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
+  }
+
+  table {
+    font-size: 14px;
+    overflow-x: auto;
+    width: 100%;
+    display: block;
+    border: none;
+  }
+
+  .tabs {
+    gap: 10px;
+    button {
+      font-size: 12px;
+    }
+  }
+
+  table td,
+  table th {
+    padding: 5px 2px;
+  }
+}
+/* Za uređaje manja od 500px */
+@media screen and (max-width: 500px) {
+  header h1 {
+    font-size: 18px;
+  }
+
+  nav {
+    top: 20px;
+    left: 25px;
+    gap: 2px;
+  }
+
+  nav a {
+    font-size: 10px;
+    font-weight: lighter;
+    padding: 3px 2px;
+  }
+  .top-bar h2 {
+    font-size: 18px;
+  }
+
+  .search-add input {
+    font-size: 14px;
+  }
+
+  table td,
+  table th {
+    padding: 8px 5px;
+    font-size: 11px;
   }
 }
