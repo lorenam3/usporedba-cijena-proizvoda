@@ -183,7 +183,13 @@ function openEditModal(product) {
 }
 
 function saveProductChanges(productId) {
-  let products = JSON.parse(localStorage.getItem("products")) || [];
+  let products = JSON.parse(localStorage.getItem("products"));
+
+  if (!Array.isArray(products)) {
+    console.error("Podaci o proizvodima nisu ispravno spremljeni!");
+    return;
+  }
+
   let product = products.find((p) => p.id == productId);
 
   if (!product) {
@@ -231,7 +237,11 @@ function closeNewProductModal() {
 }
 
 function saveNewProduct() {
-  let products = JSON.parse(localStorage.getItem("products")) || [];
+  let products = JSON.parse(localStorage.getItem("products"));
+
+  if (!Array.isArray(products)) {
+    products = [];
+  }
 
   const newProduct = {
     id: Date.now(),
