@@ -1,6 +1,9 @@
 document.addEventListener("DOMContentLoaded", () => {
   let productsData = JSON.parse(localStorage.getItem("products"));
-  let products = productsData ? productsData.products : [];
+
+  let products = Array.isArray(productsData?.products)
+    ? productsData.products
+    : [];
 
   if (products.length === 0) {
     fetch("products.json")
@@ -48,7 +51,11 @@ document.querySelectorAll(".tab").forEach((tab) => {
 
     document.querySelector("h2").textContent = kategorija;
 
-    let products = JSON.parse(localStorage.getItem("products")) || [];
+    let productsData = JSON.parse(localStorage.getItem("products")) || {};
+    let products = Array.isArray(productsData?.products)
+      ? productsData.products
+      : [];
+
     let filtriraniProizvodi = products.filter(
       (p) => p.kategorija === kategorija
     );
