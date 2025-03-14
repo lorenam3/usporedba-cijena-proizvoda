@@ -19,32 +19,33 @@ const productsPerPage = 12;
 let currentPage = 1;
 
 function fetchProducts() {
-  let products = JSON.parse(localStorage.getItem("products"))?.products || [];
+  let products = JSON.parse(localStorage.getItem("products")) || [];
 
   if (products.length === 0) {
     fetch("products.json")
-      .then((response) => response.json())
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return response.json();
+      })
       .then((data) => {
-        localStorage.setItem("products", JSON.stringify({ products: data }));
-        displayProducts(data.filter((p) => p.istaknuto));
+        localStorage.setItem("products", JSON.stringify(data));
+        displayProducts(data);
+        addEventListeners(data);
       })
       .catch((error) =>
-        console.error("Greška pri učitavanju podataka:", error)
+        console.error("Greška pri dohvaćanju podataka:", error)
       );
   } else {
-    displayProducts(products.filter((p) => p.istaknuto));
+    displayProducts(products);
+    addEventListeners(products);
   }
 }
 
 function displayProducts(products) {
   const productList = document.getElementById("product-list");
   const productContainer = document.querySelector(".product-container");
-
-  if (products.length === 0) {
-    productList.innerHTML = `<tr><td colspan="6">Nema dostupnih proizvoda.</td></tr>`;
-    productContainer.innerHTML = "<p>Nema proizvoda za prikazivanje.</p>";
-    return;
-  }
 
   productList.innerHTML = "";
   productContainer.innerHTML = "";
